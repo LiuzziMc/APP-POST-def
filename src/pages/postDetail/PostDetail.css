@@ -1,0 +1,23 @@
+.post-detail-card {
+  margin: 0 auto; 
+  max-width: 600px; 
+}
+
+ .comment {
+  font-size: 1.2em;
+  font-style: italic;
+   margin-left: 0; 
+  
+ }
+
+ .commento {
+  font-size: 0.9em;
+  font-style: italic;
+  margin-left: 0px;
+  margin-top: 10px;
+  
+ }
+
+ .comments-container {
+  background-color: rgb(245, 243, 243); }
+  

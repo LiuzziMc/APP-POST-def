@@ -1,0 +1,41 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: 20px;
+  }
+  
+  .footer-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #555;
+  }
+  
+  .footer-icons i:hover {
+    color: #007BFF;
+  }
+  .notification-container {
+    position: relative;
+  }
+  
+  .notification {
+    position: absolute;
+    top: -180px;
+    right: -10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
