@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Card, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { Post } from '../../interfaces/PostInterfaces';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComment, openPost, toggleFavorite } from '../../features/posts/postSlice';
 import './PostCard.css';
-import { RootState } from '../../app/store';
+
 
 const PostCard: React.FC<{ post: Post }> = ({ post }) => {
    // Stati per gestire il comportamento del componente

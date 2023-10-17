@@ -51,7 +51,6 @@ const postsSlice = createSlice({
       } else {
         state.favorites.push(postId); // Aggiungi ai preferiti se non presente
       }
-
       localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
 
