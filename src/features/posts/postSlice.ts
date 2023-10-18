@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Comment, Post } from '../../interfaces/PostInterfaces';
+import { Post } from '../../interfaces/PostInterfaces';
 import axios from 'axios';
 
 export interface IpropApi {
@@ -33,7 +33,7 @@ const initialState = {
   error: null as string | null,
   favorites: loadFavoritesFromLocalStorage(),
   openPost: null as Post | null,
-  comments: {} as Record<number, Comment[]>,
+  comments: [],
   search: '',
 };
 
@@ -63,24 +63,9 @@ const postsSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.search = action.payload; 
     },
-
-    // Aggiunta di un commento a un post
-    addComment: (state, action) => {
-      const { postId, comment } = action.payload;
-      if (!state.comments[postId]) {
-        state.comments[postId] = [];
-      }
-      state.comments[postId].push(comment);
-    },
-
-    // Rimozione di un commento da un post
-    removeComment: (state, action) => {
-      const { postId, commentId } = action.payload;
-      if (state.comments[postId]) {
-        state.comments[postId] = state.comments[postId].filter((comment) => comment.id !== commentId);
-      }
-    },
   },
+
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -97,5 +82,5 @@ const postsSlice = createSlice({
   },
 });
 
-export const { toggleFavorite, openPost, addComment, removeComment, setSearchQuery } = postsSlice.actions;
+export const { toggleFavorite, openPost, setSearchQuery } = postsSlice.actions;
 export default postsSlice.reducer;

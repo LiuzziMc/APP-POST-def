@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./FooterComponent.css";
 import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import Avatar from '../../../assets/images/Avatar.png'
 
 const Footer = () => {
   // Stato per la visualizzazione della notifica e del modal del profilo utente
@@ -52,13 +53,13 @@ const Footer = () => {
         <Modal.Body className="d-flex justify-content-center align-items-center">
           <div className="user-info text-center">
             <div className="user-icon">
-              <i className="bi bi-person" style={{ fontSize: "3em" }}></i>
+            <img src={Avatar} alt="Avatar" style={{ width: '70px', height: '70px', borderRadius: '50%' }} />
             </div>
             <div>
-              <h4>Nome Utente</h4>
-              <p>Cognome Utente</p>
-              <p>Email: utente@example.com</p>
-              <p>Data di Nascita: 01/01/1990</p>
+              <strong>Nome Utente:</strong>  <br />
+              <strong>Cognome Utente:</strong>  <br />
+              <strong>Email: </strong> utente@example.com <br />
+              <strong>Data di Nascita: </strong> 01/01/1990
             </div>
           </div>
         </Modal.Body>

@@ -7,8 +7,3 @@ export interface Post {
     comments: Comment[]; 
     onToggleFavorite: () => void;
   }
-  export interface Comment {
-    id: number;
-    text: string;
-    username: string;
-  }
