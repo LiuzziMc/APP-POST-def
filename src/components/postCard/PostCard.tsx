@@ -4,21 +4,31 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { openPost, toggleFavorite } from '../../features/posts/postSlice';
-import Avatar from '../../assets/images/Avatar.png'
+import Avatar from '../../assets/images/Avatar.png';
 import './PostCard.css';
 import { Post } from '../../interfaces/PostInterfaces';
 
-const PostCard: React.FC<{ post: Post }> = ({ post }) => {
+interface PostCardProps {
+  children?: React.ReactNode;
+  post: Post;
+  isInFavoritesPage?: boolean;
+}
+
+const PostCard: React.FC<PostCardProps> = ({ post, isInFavoritesPage }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state: RootState) => state.posts.favorites);
   // Lista di esempio di utenti che hanno messo Mi Piace
   const usersWhoLiked = ["Tizio", "Caio", "Sempronio"];
   // Stato per mostrare/nascondere il messaggio di conferma
-  const [confirmationVisible, setConfirmationVisible] = useState(false); 
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
 
-    // aprire il dettaglio del post
+  // aprire il dettaglio del post
   const handleOpenPost = () => {
     dispatch(openPost(post));
+  };
+
+  const handleRemoveFromFavorites = (postId: number) => {
+    dispatch(toggleFavorite(postId));
   };
 
   const handleToggleFavorite = () => {
@@ -35,7 +45,7 @@ const PostCard: React.FC<{ post: Post }> = ({ post }) => {
     <Card className={`card-container h-100 mb-5 ${isFavorite ? 'favorite' : ''}`}>
       <Card.Body className="card-body card-container d-flex flex-column text-center">
         <Card.Header className="card-header">
-        <img src={Avatar} alt="Comment Avatar" className="comment-avatar" style={{ width: "30px", height: "30px", borderRadius: "50%" }}/>
+          <img src={Avatar} alt="Comment Avatar" className="comment-avatar" style={{ width: "30px", height: "30px", borderRadius: "50%" }} />
           <div className="post-info"> {post.id} </div>
         </Card.Header>
         <Card.Title className="card-title mt-2">{(post.title)}</Card.Title>
@@ -45,8 +55,12 @@ const PostCard: React.FC<{ post: Post }> = ({ post }) => {
         {/* Icone */}
         <div className="icons-container">
           <i className={`bi bi-chat comment-icon`} style={{ cursor: 'pointer' }}></i>
-          <i className={`bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'} text-danger favorite-icon`} onClick={handleToggleFavorite}></i>
           <i className="bi bi-share share-icon" style={{ cursor: 'pointer' }}></i>
+          <i className={`bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'} text-danger favorite-icon`} onClick={handleToggleFavorite}></i>
+          {/* Mostra l'icona del cestino solo quando il post è nella pagina preferiti */}
+          {isInFavoritesPage && (
+            <i className="bi bi-trash" style={{ cursor: "pointer", color: "dark" }} onClick={() => handleRemoveFromFavorites(post.id)} ></i>
+          )}
         </div>
         <br />
         <div className="likes-container">
