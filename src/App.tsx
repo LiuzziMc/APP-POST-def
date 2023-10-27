@@ -6,7 +6,10 @@ import FooterComponent from "./components/common/footerComponent/FooterComponent
 import HomePage from "./pages/homePage/HomePage";
 import ScrollToTopButton from "./components/common/scrollToTopButton/ScrollToTopButton";
 import PostDetail from "./pages/postDetail/PostDetail";
-import Favourites from "./pages/favourites/Favourites"
+import Favourites from "./pages/favourites/Favourites";
+import DraftList from "./pages/drafts/DraftList";
+import DraftDetail from './pages/drafts/DraftDetail';
+
 
 function App() {
   return (
@@ -15,6 +18,8 @@ function App() {
         <NavbarComponent />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/drafts" element={<DraftList />} />
+          <Route path="/draft/:draftId" element={<DraftDetail />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/post/:postId" element={<PostDetail />}></Route>
         </Routes>

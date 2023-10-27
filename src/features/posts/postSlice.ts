@@ -13,7 +13,6 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (props: Ipr
   try {
     const linkApi = `https://jsonplaceholder.typicode.com/posts?_start=${props.start}&_limit=${props.limit}${props.title ? `&title=${props.title}` : ''}`;
     const response = await axios.get(linkApi);
-    console.log('Dati di risposta:', response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('Errore nel fetch dei post');

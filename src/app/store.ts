@@ -2,23 +2,32 @@ import { configureStore, combineReducers, ThunkAction, Action } from '@reduxjs/t
 import postsReducer from '../features/posts/postSlice';
 import commentsReducer from '../features/comments/commentSlice';
 import usersReducer from '../features/users/userSlice';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; 
+import draftReducer from '../features/drafts/draftSlice'
+import { persistStore, persistReducer, REHYDRATE, FLUSH, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['posts', 'comments', 'users'],
+  whitelist: ['posts', 'comments', 'users', 'drafts'],
+
 };
 
 const persistedReducer = persistReducer(persistConfig, combineReducers({
   posts: postsReducer,
   comments: commentsReducer,
-  users: usersReducer
+  users: usersReducer,
+  drafts: draftReducer
 }));
 
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
@@ -34,20 +43,21 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 export const saveStateToLocalStorage = () => {
   try {
     const serializedState = JSON.stringify(store.getState());
-    localStorage.setItem('reduxState', serializedState);
+    localStorage.setItem('myReduxState', serializedState); 
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 };
 
 export const loadStateFromLocalStorage = () => {
   try {
-    const serializedState = localStorage.getItem('reduxState');
+    const serializedState = localStorage.getItem('myReduxState'); 
     if (serializedState === null) {
       return undefined;
     }
     return JSON.parse(serializedState);
   } catch (err) {
+    console.error(err);
     return undefined;
   }
 };
@@ -60,3 +70,4 @@ if (preloadedState) {
 store.subscribe(() => {
   saveStateToLocalStorage();
 });
+

@@ -1,0 +1,89 @@
+.text {
+  margin-top: 100px;
+  font-size: 4em;
+}
+
+.button {
+  margin-left: 80em;
+}
+
+.bozza {
+  font-size: 3em;
+}
+
+.div-form {
+  background-color: white;
+  max-width: 700px; 
+  margin: 0 auto; 
+  margin-bottom: 5em;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.modal-container {
+  margin-bottom: 5em;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.error-message {
+  color: red;
+}
+
+.checkbox {
+  margin-right: 5px;
+}
+
+.modal-title {
+  font-size: 2em;
+  font-style: italic;
+}
+
+.card-form {
+  margin-bottom: 10em;
+}
+
+.bi.bi-trash {
+  cursor: pointer;
+}
+

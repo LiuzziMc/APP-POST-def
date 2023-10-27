@@ -16,7 +16,7 @@ interface CommentComponentProps {
   postId: number;
 }
 
-const CommentComponent: React.FC<CommentComponentProps> = ({ postId }) => {
+const CommentComponent: React.FC<CommentComponentProps> = ({ postId  }) => {
   const dispatch: AppDispatch = useDispatch();
   const comments: Comment[] = useSelector(
     (state: RootState) => state.comments.comments

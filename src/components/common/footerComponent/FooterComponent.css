@@ -10,6 +10,7 @@
     align-items: center;
     padding: 10px 0;
     margin-top: 20px;
+
   }
   
   .footer-icons {
@@ -26,6 +27,7 @@
   .footer-icons i:hover {
     color: #007BFF;
   }
+
   .notification-container {
     position: relative;
   }
@@ -39,3 +41,22 @@
     padding: 10px;
     border-radius: 5px;
   }
+
+  .bozze-icon {
+  font-size: 0px;
+    cursor: pointer;
+  }
+
+  .bozze-icon:hover {
+    color: #007BFF;
+  }
+
+.footer-icons .bi.bi-house-fill {
+  color: #007BFF;
+}
+
+.footer-icons .bi {
+  position: relative;
+  cursor: pointer;
+}
+

@@ -1,4 +1,6 @@
 export interface Post {
+  
+    isDraft: boolean;
     userId: number;
     id: number;
     title: string;

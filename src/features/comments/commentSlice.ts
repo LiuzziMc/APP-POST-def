@@ -12,7 +12,7 @@ const fetchCommentsForPost = createAsyncThunk('comments/fetchCommentsForPost', a
 
 const commentsSlice = createSlice({
   name: 'comments',
-  initialState: { comments: [], status: 'idle', error: null as string | null | undefined },
+  initialState: { comments: [], status: 'idle', error: null as string | null},
   reducers: {},
   extraReducers: (builder) => {
     builder

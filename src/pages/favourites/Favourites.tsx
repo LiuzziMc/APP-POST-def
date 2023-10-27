@@ -13,11 +13,18 @@ const Favourites = () => {
     const dispatch = useDispatch();
   
     const favoritePosts = allPosts.filter((post) => favoritePostIds.includes(post.id));
-  
-    const handleRemoveFromFavorites = (postId: number) => {
-      dispatch(toggleFavorite(postId));
+    
+
+    const handleRemoveFromFavorites = (postId: number) => { 
+      const shouldRemove = window.confirm("Sei sicuro di voler rimuovere questo post dai preferiti?");
+      if (shouldRemove) {
+        dispatch(toggleFavorite(postId));
+      } else {
+        window.alert("Eliminazione annullata");
+      }
     };
-  
+    
+
     return (
     <Container>
         <div className="row">
@@ -35,7 +42,7 @@ const Favourites = () => {
           {favoritePosts.map((post) => (
             <div className="col-12 col-md-6 col-lg-4 mb-5" key={post.id}>
               <PostCard post={post}  isInFavoritesPage={true} >
-                <i className="bi bi-trash post-card-trash-icon" style={{ cursor: "pointer", color: "dark" }} onClick={() => handleRemoveFromFavorites(post.id)}></i>
+              <i className="bi bi-trash post-card-trash-icon" style={{ cursor: "pointer", color: "dark" }} onClick={() => handleRemoveFromFavorites(post.id)}></i>
               </PostCard>
             </div>
           ))}
